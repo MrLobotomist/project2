@@ -1,0 +1,13 @@
+{% extends "sign/layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <div class="text-center">
+    <h1>Welcome to your profile, {{ user.username }}!</h1>
+    </div>
+    <a href="{% url 'secret' %}">secret page</a><br>
+    <a href="{% url 'logout' %}">leave</a>
+    
+{% endblock %}

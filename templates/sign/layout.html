@@ -1,0 +1,98 @@
+{% load static %}
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	<link rel='icon' href="{% static 'sign/img/favicon.png' %}" type='image/x-icon' sizes="16x16" />
+
+	{% block css %}
+	{% endblock css %}
+	<!-- CSS here -->
+	<link rel="stylesheet" href="{% static 'sign/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'sign/css/styles.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'sign/font-awesome/css/font-awesome.min.css' %}">
+
+</head>
+
+<body>
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top text-body" style="background-color: #0a1322;">
+		<a class="navbar-brand text-warning" href="{% url 'index' %}">AIGames</a>
+		<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto text-body">
+				<li class="nav-item" >
+					<a class="nav-link text-white" href="{% url 'tetris' %}">Тетрис</a>
+				</li>
+				<li class="nav-item" >
+					<a class="nav-link text-white" href="{% url 'snake' %}">Змейка</a>
+				</li>
+				<li class="nav-item flex-last">
+					<a class="nav-link" href="#"></a>
+				</li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				{% if request.user.is_authenticated %}
+				<li><a href="{% url 'profile' %}" class="btn btn-primary" role="button">{{ user.username}}</a></li>
+				<li>&#160</li>
+				<li><a href="{% url 'logout' %}" class="btn btn-outline-warning" role="button">Выйти</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}" class="btn btn-outline-warning"
+						role="button">Вход/Регистрация</a></li>
+				{% endif %}
+			</ul>
+		</div>
+ </nav>
+
+ 	{% block content %}
+ 	{% endblock content %}
+
+<footer class=" text-center" style="background-color: #0a1322;">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+		  <i class="fa fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+		  <i class="fa fa-twitter"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+		  <i class="fa fa-instagram"></i></a>
+
+      <!-- VK -->
+      <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+		  <i class="fa fa-vk" aria-hidden="true"></i></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
+		  <i class="fa fa-github" aria-hidden="true"></i></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: #0a1322; color: #f3f7f8">
+    © 2022 Copyright:
+    <a style=" color: #f3f7f8" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+	<!-- JS here -->
+	<script src="{% static 'sign/js/jquery-3.6.0.min.js' %}"></script>
+	<script src="{% static 'sign/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

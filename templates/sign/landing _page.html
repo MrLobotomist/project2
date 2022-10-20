@@ -1,0 +1,31 @@
+
+{% block landing_page %}
+ <div class="col-lg-6 ml-2 " style="height: 100vh">
+        <div class="row">&#160</div>
+		<div class="row">&#160</div>
+        <div class="row">&#160</div>
+        <div class="row">
+            <h1 class=" display-1 font-weight-light col-lg-11 col-12" style="color:#f3f7f8 ">Машинное обучение</h1>
+        </div>
+        <div class="row">
+            <p class=" col-lg-11 col-12 mt-lg-2" style="color:#f3f7f8">Разработка и внедрение IT продуктов под ваши проекты</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12 mt-lg-5">
+                 <p class="" style="color:#f3f7f8">Технологии машинного обучения применены нами в игре тетрис, обыграйте наш ИИ!</p>
+            </div>
+            <div class="col-lg-6 col-12 mt-lg-5 mt-5">
+                <a href="{% url 'tetris' %}" class="btn btn-warning col-lg-8 col-11 mx-auto btn-lg" role="button">Играть</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12 mt-lg-3">
+                <p class="" style="color:#bdc3c7">Сроки выполнения от 2 месяцев</p>
+                <p class="" style="color:#bdc3c7">Стоимость разработки от 50 тыс. руб.</p>
+            </div>
+            <div class="col-lg-6 col-12 mt-lg-3 my-auto">
+                <a href="{% url 'login' %}" class="btn btn-warning col-lg-8 col-11 mx-auto btn-lg" role="button">Заказать проект</a>
+            </div>
+        </div>
+    </div>
+{% endblock landing_page %}

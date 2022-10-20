@@ -1,0 +1,63 @@
+{% extends "sign/layout.html" %}
+
+{% load static %}
+
+{% block css %}
+<link href="{% static 'game/css/main.css' %}" rel="stylesheet" type="text/css">
+{% endblock css %}
+
+
+{% block content %}
+<section class="content_tetris">
+    <div class="container py-5">
+        <div class="row">&#160</div>
+        <div class="row">&#160</div>
+        <div class="row justify-content-center">
+            <div class="col-xl-lg">
+                <h1 class="header">Tetris AI</h1>
+                <div class="gamesGrid">
+                    <div class="game-container">
+                        <canvas width="200px" height="400px" id="grid-canvas-player" class="grid"></canvas>
+                        <div class="controls-container">
+                            <div id="score-container-player" class="score-container">0</div>
+                            <div class="next-container">
+                                <canvas id="next-canvas-player" class="next-canvas" width="80px" height="80px"></canvas>
+                            </div>
+                            <a id="start-button" class="start-ai-button">Start Game</a>
+                            <a id="drop-button" class="reset-button">Reset</a>
+                        </div>
+                    </div>
+                    <div class="game-container">
+                        <canvas width="200px" height="400px" id="grid-canvas-ai" class="grid"></canvas>
+                        <div class="controls-container">
+                            <div id="score-container-ai" class="score-container">0</div>
+                            <div class="next-container">
+                                <canvas id="next-canvas-ai" class="next-canvas"  width="80px" height="80px"></canvas>
+                            </div>
+                            <a id="ai-button" class="start-ai-button">Run AI</a>
+                            <a id="reset-button" class="reset-button">Reset</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="footer">
+                    <p>Created by <a href="https://vk.com/manuelka" target="#">DVP Team</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'game/js/polyfill.js' %}"></script>
+<script src="{% static 'game/js/grid.js' %}"></script>
+<script src="{% static 'game/js/piece.js' %}"></script>
+<script src="{% static 'game/js/timer.js' %}"></script>
+<script src="{% static 'game/js/stopwatch.js' %}"></script>
+<script src="{% static 'game/js/game_manager.js' %}"></script>
+<script src="{% static 'game/js/random_piece_generator.js' %}"></script>
+<script src="{% static 'game/js/ai.js' %}"></script>
+<script src="{% static 'game/js/tuner.js' %}"></script>
+<script>
+    var manager = new GameManager();
+</script>
+
+{% endblock content %}

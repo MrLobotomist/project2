@@ -1,0 +1,152 @@
+{% extends "sign/layout.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Landing Page -->
+<div class="container-fluid " style="background-image: url({% static 'sign/img/AI_ackground.jpeg' %}) ; background-size: cover; height: 100vh">
+    <div class="col-lg-6 ml-2 " style="height: 100vh">
+        <div class="row">&#160</div>
+		<div class="row">&#160</div>
+        <div class="row">&#160</div>
+        <div class="row">
+            <p class="font-weight-light col-lg-11 col-12" style="color:#f3f7f8; font-size: 4.6vh">Машинное обучение</p>
+        </div>
+        <div class="row">
+            <p class="font-weight-light col-lg-11 col-12 mt-lg-2" style="color:#f3f7f8; font-size: 3vh">Разработка и внедрение IT продуктов под ваши проекты</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12 mt-lg-5">
+                 <p class="font-weight-light" style="color:#f3f7f8; font-size: 2vh">Технологии машинного обучения применены нами в игре тетрис, обыграйте наш ИИ!</p>
+            </div>
+            <div class="col-lg-6 col-12 mt-lg-5 mt-5">
+                <a href="{% url 'tetris' %}" class="btn btn-warning col-lg-8 col-11 mx-auto btn-lg" role="button">Играть</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-12 mt-lg-3">
+                <p class="font-weight-light" style="color:#bdc3c7; font-size: 2vh">Сроки выполнения от 2 месяцев</p>
+                <p class="font-weight-light" style="color:#bdc3c7; font-size: 2vh">Стоимость разработки от 50 тыс. руб.</p>
+            </div>
+            <div class="col-lg-6 col-12 mt-lg-3 my-auto">
+                <a href="{% url 'login' %}" class="btn btn-warning col-lg-8 col-11 mx-auto btn-lg" role="button">Заказать проект</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Advantages -->
+<div class="container col-lg-10 col-11 mx-auto  mt-md-5  mt-1">
+    <div class="row">
+        <p class=" font-weight-light mx-auto" style="font-size: 4vh" >Работать с нами это:</p>
+    </div>
+    <div class="row mt-5">
+        <div class="card col-lg-3 col-12 mx-auto p-3 p-lg-5" >
+            <div class="row">
+            <i class="fa fa-rub fa-5x mx-auto" style="color: #fbc304"></i>
+            </div>
+            <div class="row">
+                <p class=" font-weight-light text-center mx-auto" style="font-size: 2vh">ЛУЧШИЕ ЦЕНЫ</p>
+                <p class="mx-auto">Компания работает на уровне доступных цен по разным направлениям. Мы идем навстречу заказчику.</p>
+            </div>
+        </div>
+        <div class="card col-lg-3 col-12 mx-auto mt-lg-2 mt-2 p-3 p-lg-5">
+          <div class="row">
+            <i class="fa fa-wheelchair-alt fa-5x mx-auto" style="color: #fbc304"></i> <!-- fa-rocket -->
+          </div>
+            <div class="row">
+                <p class=" font-weight-light text-center mx-auto" style="font-size: 2vh">БЫСТРО</p>
+                <p class="mx-auto">Мы ценим ваше время и делаем быстро. Для нас важно, чтобы вы получили решение вовремя.</p>
+            </div>
+        </div>
+        <div class="card col-lg-3 col-12 mx-auto mt-lg-2 mt-2 p-3 p-lg-5">
+            <div class="row">
+            <i class="fa fa-thumbs-o-up fa-5x mx-auto " style="color: #fbc304"></i>
+            </div>
+            <div class="row">
+                <p class=" font-weight-light text-center mx-auto" style="font-size: 2vh">КАЧЕСТВЕННО И СОВРЕМЕННО</p>
+                <p class="mx-auto">Нашей команде по плечу любые задачи. Мы всегда готовы сделать современно и дать гарантию качества!</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">&#160</div>
+</div>
+
+<!-- About us -->
+<div class="container col-lg-10 col-11 mt-md-5 mt-1">
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      <p class=" font-weight-light " style="font-size: 4vh" >О нас</p>
+        <p class=" font-weight-light " style="font-size: 1.9vh" >Мы уже на протяжении нескольких месяцев успешно занимаемся созданием программного обеспечения.
+          Для создания передовых проектов нашими специалистами, наработавшими уже более 1.000 часов,
+          используются как готовые решения, так и собственный опыт в программировании.
+        </p>
+        <p class="font-weight-light" style="font-size: 1.9vh">В нашей команде трудятся специалисты только с самой высокой квалификацией:
+            <br><b>Ротарь Сергей</b> (<i> Team Leader </i>)
+            <br><b>Павел Смехов</b> (<i> Senior Cryptography Engineer </i>),
+            <br><b>Екатерина Ханыкова</b> (<i> Senior Frontend </i>),
+            <br><b>Ольга Гордеева</b> (<i> Senior Database developer </i>),
+            <br><b>Дмитрий Тухбатуллин</b> (<i> Technical documentator </i>),
+            <br><b>Александр Лютин</b> (<i> Senior Backend, DataSience </i>),
+            <br><b>Павел Попов</b> (<i> Senior Frontend </i>).
+        </p>
+    </div>
+      <div class="col-lg-6 col-12 text-center">
+          <img src="{% static 'sign/img/team.jpeg' %}" class="img_team rounded mx-auto "/>
+      </div>
+  </div>
+    <div class="row">&#160</div>
+</div>
+
+<!-- About ML -->
+<div class="container col-lg-10 col-11 mx-auto mt-lg-3 mt-5">
+    <div class="row">
+        <p class="font-weight-light mx-auto" style="font-size: 4vh" >Принцип функционирования машинного обучения</p>
+    </div>
+    <div class="row mt-4">
+        <div class="row">
+            <div class="card col-lg-4 col-11 mx-auto mt-lg-2 mt-2 p-3 p-lg-5" >
+                <div class="row">
+                    <i class="fa fa-database fa-5x mx-auto" style="color: #fbc304"></i>
+                </div>
+                <div class="row">
+                    <p class="font-weight-light text-center mx-auto" style="font-size: 2vh">ПОДГОТОВКА МАССИВА ДАННЫХ</p>
+                    <p class="mx-auto" >Происходит сбор информации, необходимой для решения вопроса, её фильтрация и выборка.</p>
+                </div>
+            </div>
+            <div class="card col-lg-4 col-11 mx-auto mmt-lg-2 mt-2 p-3 p-lg-5">
+                <div class="row">
+                    <i class="fa fa-book fa-5x mx-auto" style="color: #fbc304"></i>
+                </div>
+                <div class="row">
+                    <p class="font-weight-light text-center mx-auto" style="font-size: 2vh">ОБУЧЕНИЕ</p>
+                    <p class="mx-auto">Подбирается математическая функция, которая обеспечит правильное решение задачи.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-lg-4">
+            <div class="card col-lg-4 col-11 mx-auto mt-lg-2 mt-2 p-3 p-lg-5">
+            <div class="row">
+            <i class="fa fa-eye fa-5x mx-auto " style="color: #fbc304"></i>
+            </div>
+            <div class="row">
+                <p class="font-weight-light text-center mx-auto" style="font-size: 2vh">ОЦЕНКА</p>
+                <p class="mx-auto">Проверка верности и степени эффективности функционирования алгоритмов машинного обучения.</p>
+            </div>
+            </div>
+            <div class="card col-lg-4 col-11 mx-auto mt-lg-2 mt-2 p-3 p-lg-5">
+                <div class="row">
+                    <i class="fa fa-pencil-square-o fa-5x mx-auto " style="color: #fbc304"></i>
+                </div>
+                <div class="row">
+                    <p class="font-weight-light text-center mx-auto" style="font-size: 2vh">КОРРЕКЦИЯ</p>
+                    <p class="mx-auto">Проведение доработки алгоритмов с целью увеличения их точности, эффективности и компактности.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">&#160</div>
+</div>
+
+
+
+{% endblock content %}
