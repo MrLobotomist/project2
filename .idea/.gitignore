@@ -7,3 +7,7 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 /__pycache__
+# Игнорировать sqlite files
+/db/*.sqlite3
+# Игнорировать .pyc files
+*.pyc
