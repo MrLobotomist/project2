@@ -14,7 +14,7 @@ function GameManager() {
     });
     var workingPiecesAI = [null, rpgAi.nextPiece()];
     var workingPieceAI = null;
-    var isAiActive = true;          // Активация AI
+    var isAiActive = false;          // Активация AI
 
     var gridCanvasPlayer = document.getElementById('grid-canvas-player');
     var nextCanvasPlayer = document.getElementById('next-canvas-player');
@@ -27,15 +27,19 @@ function GameManager() {
     var workingPiecePlayer = null;
     document.addEventListener('keydown', onKeyDown);
 
-    var resetButton = document.getElementById('reset-button');
+    var resetButton = document.getElementById('stop-button');
     var aiButton = document.getElementById('ai-button');
 
     var dropButton = document.getElementById('drop-button');
+    var startButton = document.getElementById('start-button');
+    var stopAllButton = document.getElementById('stopAll-button');
 
 
     var gravityTimerPlayer = new Timer(onGravityTimerTickPlayer, 500);
     var scoreAI = 0;
     var scorePlayer = 0;
+
+    var gameStarted
 
     // Graphics AI
     function intToRGBHexStringAI(v) {
@@ -175,21 +179,21 @@ function GameManager() {
 
     function startWorkingPieceDropAnimationAI(callback = function () { }) {
         // Calculate animation height
-        animationHeight = 0;
-        _workingPiece = workingPieceAI.clone();
-        while (_workingPiece.moveDown(gridAI)) {
-            animationHeight++;
+        animationHeightAI = 0;
+        _workingPieceAI = workingPieceAI.clone();
+        while (_workingPieceAI.moveDown(gridAI)) {
+            animationHeightAI++;
         }
 
-        var stopwatchAI = new Stopwatch(function (elapsed) {
-            if (elapsed >= animationHeight * 20) {
+        var stopwatchAI = new Stopwatch(function (elapsedAI) {
+            if (elapsedAI >= animationHeightAI * 20) {
                 stopwatchAI.stop();
-                redrawGridCanvasAI(20 * animationHeight);
+                redrawGridCanvasAI(20 * animationHeightAI);
                 callback();
                 return;
             }
 
-            redrawGridCanvasAI(20 * elapsed / 20);
+            redrawGridCanvasAI(20 * elapsedAI / 20);
         });
 
         workingPieceDropAnimationStopwatchAI = stopwatchAI;
@@ -209,21 +213,21 @@ function GameManager() {
 
     function startWorkingPieceDropAnimationPlayer(callback = function () { }) {
         // Calculate animation height
-        animationHeight = 0;
-        _workingPiece = workingPiecePlayer.clone();
-        while (_workingPiece.moveDown(gridPlayer)) {
-            animationHeight++;
+        animationHeightPlayer = 0;
+        _workingPiecePlayer = workingPiecePlayer.clone();
+        while (_workingPiecePlayer.moveDown(gridPlayer)) {
+            animationHeightPlayer++;
         }
 
-        var stopwatchPlayer = new Stopwatch(function (elapsed) {
-            if (elapsed >= animationHeight * 20) {
+        var stopwatchPlayer = new Stopwatch(function (elapsedPlayer) {
+            if (elapsedPlayer >= animationHeightPlayer * 20) {
                 stopwatchPlayer.stop();
-                redrawGridCanvasPlayer(20 * animationHeight);
+                redrawGridCanvasPlayer(20 * animationHeightPlayer);
                 callback();
                 return;
             }
 
-            redrawGridCanvasPlayer(20 * elapsed / 20);
+            redrawGridCanvasPlayer(20 * elapsedPlayer / 20);
         });
 
         workingPieceDropAnimationStopwatchPlayer = stopwatchPlayer;
@@ -407,6 +411,9 @@ function GameManager() {
         redrawGridCanvasAI();
         redrawNextCanvasAI();
 //        startTurnAI();
+        isAiActive = false;
+        aiButton.style.backgroundColor = "#f9f9f9";
+        
     }
 
     dropButton.onclick = function () {
@@ -424,18 +431,63 @@ function GameManager() {
         cancelWorkingPieceDropAnimationPlayer();
         gridPlayer = new Grid(22, 10);
         rpgPlayer = new RandomPieceGenerator();
-        workingPiecesPlayer = [null, rpgAi.nextPiece()];
+        workingPiecesPlayer = [null, rpgPlayer.nextPiece()];
         workingPiecePlayer = null;
         scorePlayer = 0;
         updateScoreContainerPlayer();
         startTurnPlayer();
     }
 
+    startButton.onclick = function () {
+        if (gameStarted){
 
+        }
+        else {
+            isAiActive = true;
+            aiButton.style.backgroundColor = "#e9e9ff";
+            startTurnPlayer();
+            startTurnAI();
+            gameStarted = true;
+        }
+        
 
+    }
 
-    startTurnPlayer();
-    startTurnAI();
+    stopAllButton.onclick = function () {
+        gameStarted = false;
+        isAiActive = true;
+        aiButton.style.backgroundColor = "#f9f9f9";
+        cancelWorkingPieceDropAnimationAI();
+        gridAI = new Grid(22, 10);
+        rpgAi = new RandomPieceGenerator();
+        workingPiecesAI = [null, rpgAi.nextPiece()];
+        workingPieceAI = null;
+        scoreAI = 0;
+        updateScoreContainerAI();
+
+        redrawGridCanvasAI();
+        redrawNextCanvasAI();
+
+        gravityTimerPlayer.stop();
+        cancelWorkingPieceDropAnimationPlayer();
+        gridPlayer = new Grid(22, 10);
+        rpgPlayer = new RandomPieceGenerator();
+        workingPiecesPlayer = [null, rpgPlayer.nextPiece()];
+        workingPiecePlayer = null;
+        scorePlayer = 0;
+        updateScoreContainerPlayer();
+
+        redrawGridCanvasPlayer();
+        redrawNextCanvasPlayer();
+    }
+
+    
+    // var startButton = document.getElementById('start-button');
+    // var stopAllButton = document.getElementById('stopAll-button');
+
+    
+
+    
 
 
 
