@@ -12,9 +12,8 @@
 	{% endblock css %}
 	<!-- CSS here -->
 	<link rel="stylesheet" href="{% static 'sign/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'sign/css/styles.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'sign/css/styles.css' %}">
 	<link rel="stylesheet" href="{% static 'sign/font-awesome/css/font-awesome.min.css' %}">
-
 </head>
 
 <body>
@@ -52,11 +51,9 @@
  	{% block content %}
  	{% endblock content %}
 
-<footer class=" text-center" style="background-color: #0a1322;">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
+<footer>
     <!-- Section: Social media -->
-    <section class="mb-4">
+    <div class="text-center">
       <!-- Facebook -->
       <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
 		  <i class="fa fa-facebook-f"></i></a>
@@ -76,17 +73,15 @@
       <!-- Github -->
       <a class="btn btn-outline-warning btn-floating m-1" href="#!" role="button">
 		  <i class="fa fa-github" aria-hidden="true"></i></a>
-    </section>
+    </div>
     <!-- Section: Social media -->
-  </div>
-  <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: #0a1322; color: #f3f7f8">
-    © 2022 Copyright:
-    <a style=" color: #f3f7f8" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
+	<!-- Copyright -->
+	<div class="text-center p-3" style="color: #f3f7f8">
+		© 2022 Copyright:
+		<a style=" color: #f3f7f8" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+	</div>
+	<!-- Copyright -->
 </footer>
 
 	<!-- JS here -->

@@ -35,11 +35,11 @@ class register_view(CreateView):
 def profile_view(request):
     """ Страница профиля """
 
-    return render(request, 'sign/profile.html')
+    return render(request, 'sign/profile.html', {'title': 'Профиль'})
 
 
 @login_required
 def secret_view(request):
     """ Страница доступная только авторизованным пользователям """
 
-    return HttpResponse('Only authorized users see this page!')
+    return render(request, 'sign/profile.html', {'title': 'Профиль'})

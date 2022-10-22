@@ -1,3 +1,16 @@
+html,
+body {
+  height: 100%;
+  max-width: 100vw;
+}
+footer {
+  padding: 10px;
+  min-height: 120px;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #0a1322; 
+  color: #f3f7f8"
+}
 .card{
 border-style: solid;
 border-radius: 10px 10px 10px 10px;
@@ -7,6 +20,18 @@ border-width: 1px;
 .container-boss{
 background-size: cover;
 }
+.content {
+  padding-top: 56px;
+  min-height: calc(100vh - 120px);
+}
+.content_tetris{
+  min-height: calc(100vh - 120px);
+}
+.img_team{
+  max-height: 100vh;
+  max-width: 90vw;
+}
+    
 #box-boss {
 margin-top: 70px;
 background: rgb(62,215,198);
@@ -17,27 +42,3 @@ border-radius: 10px 10px 10px 10px;
     width: 100%;
     height: 100vh;
 }
-.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-}
-.content {
-   min-height: calc(100vh - 166px);
-   background-color: #0a1322;
-}
-.content_tetris{
-min-height: calc(100vh - 166px);
-}
-.img_team{
-max-height: 100vh;
-max-width: 90vw;
-}
-
-
-
-
-
-

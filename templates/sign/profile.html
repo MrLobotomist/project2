@@ -1,13 +1,58 @@
 {% extends "sign/layout.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'sign/css/profile.css' %}" type="text/css">{% endblock %}
 
 {% block content %}
-    <h1>Dashboard</h1>
-    <div class="text-center">
-    <h1>Welcome to your profile, {{ user.username }}!</h1>
+<div class="border border-dark rounded back-profile content justify-content-center">
+    <h1 class="text-center mb-2" style="color: white;">Welcome to your profile, {{ user.username }}!</h1>
+
+    <div class="container justify-content-center">
+        <div class="col-xl-6 justify-content-center">
+            <div class="card rounded-2 text-black">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card-body p-md-4 mx-md-4">
+                            <div class="text-center">
+                                <img src="{% static 'sign/img/neuro.png' %}" style="width: 185px;" alt="logo">
+                                <h4 class="mt-1 mb-5 pb-1">AIGames</h4>
+                            </div>
+                        
+                        </div>
+                        <div class="text-center col-md-6 mb-3 mt-3">
+                            <div class="mb-2" >
+                                <a target='_blank' href="{% url 'secret' %}">
+                                    <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Заказать услугу</button>
+                                </a>
+                            </div>
+                            <p style="color: white;">Нажав на кнопку, вы попадаете на страницу с формой, в которой можете выбрать своего наставника и вид обучения.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 align-items-center">
+                        <div class="text-black px-3 py-4 p-md-5 mx-md-4">
+                            <h4 class="mb-4">We are more than just a company</h4>
+                            <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                                do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+
+                        <div class="text-center col-md-6 mb-3 mt-3">
+                            <div class="mb-2">
+                                <a target='_blank' href="{% url 'logout' %}">
+                                    <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Выйти из профиля</button>
+                                </a>
+                            </div>
+                            <p style="color: white;">Для того, что бы выйти - вам необходимо нажать на кнопку "Выйти из профиля".</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <a href="{% url 'secret' %}">secret page</a><br>
-    <a href="{% url 'logout' %}">leave</a>
-    
-{% endblock %}
+</div>
+{% endblock %} 

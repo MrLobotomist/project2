@@ -30,31 +30,28 @@
 
 
 {% block content %}
-<body>
-    <div class="centered-container tfjs-example-container">
-        <section class="title-area">
-            <h1>TensorFlow.js Reinforcement Learning: Snake DQN</h1>
-            <p class="subtitle">Deep Q-Network for the Snake Game</p>
-        </section>
-        <section>
-            <p class="section-head">Description</p>
-            <p> This page loads a trained Deep Q-Network (DQN) and use it to play the snake game. The training is done
-                in Node.js using <a href="https://github.com/tensorflow/tfjs-node">tfjs-node</a>. See <a
-                    href="https://github.com/tensorflow/tfjs-examples/blob/master/snake-dqn/train.js">train.js</a>. </p>
-        </section>
-        <section>
-            <div id="load-model-div"> <button id="load-hosted-model" width="200px" disabled>Load hosted model</button>
-            </div>
-            <div> <button id="auto-play-stop" disabled>Auto Play</button> <button id="step" disabled>Step</button>
-                <button id="reset" disabled>Reset</button> </div>
-            <div id="show-q-values-div"> <input type="checkbox" id="show-q-values" checked> <span>Show Q-values</span>
-            </div>
-            <div id="game-status-div"> <span id="game-status">Game started.</span> </div>
-            <div> <canvas id="game-canvas" height="400px" width="400px"></canvas> </div>
-        </section>
-    </div>
-</body>
-
+<div class="centered-container tfjs-example-container content">
+    <section class="title-area">
+        <h1>TensorFlow.js Reinforcement Learning: Snake DQN</h1>
+        <p class="subtitle">Deep Q-Network for the Snake Game</p>
+    </section>
+    <section>
+        <p class="section-head">Description</p>
+        <p> This page loads a trained Deep Q-Network (DQN) and use it to play the snake game. The training is done
+            in Node.js using <a href="https://github.com/tensorflow/tfjs-node">tfjs-node</a>. See <a
+                href="https://github.com/tensorflow/tfjs-examples/blob/master/snake-dqn/train.js">train.js</a>. </p>
+    </section>
+    <section>
+        <div id="load-model-div"> <button id="load-hosted-model" width="200px" disabled>Load hosted model</button>
+        </div>
+        <div> <button id="auto-play-stop" disabled>Auto Play</button> <button id="step" disabled>Step</button>
+            <button id="reset" disabled>Reset</button> </div>
+        <div id="show-q-values-div"> <input type="checkbox" id="show-q-values" checked> <span>Show Q-values</span>
+        </div>
+        <div id="game-status-div"> <span id="game-status">Game started.</span> </div>
+        <div> <canvas id="game-canvas" height="400px" width="400px"></canvas> </div>
+    </section>
+</div>
 <!-- <div src="{% static 'game/dqn/model.json' %}"></div>
 <div src="{% static 'game/dqn/weight.bin' %}"></div> -->
 
