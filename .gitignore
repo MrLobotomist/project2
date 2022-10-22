@@ -6,7 +6,6 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-__pycache__
 # Игнорировать sqlite files
 *.sqlite3
 # Игнорировать .pyc files
