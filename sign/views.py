@@ -4,11 +4,9 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from sign.forms import *
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-
 from sign.models import Users
 
 
@@ -38,8 +36,12 @@ class register_view(CreateView):
 @login_required
 def profile_view(request):
     """ Страница профиля """
-    user = Users.objects.get(user_id=request.user.id)
-    return render(request, 'sign/profile.html', {'title': 'Профиль', 'name': user.name, 'surname': user.surname, 'phone': user.phone})
+    try:
+        user = Users.objects.get(user_id=request.user.id)
+        return render(request, 'sign/profile.html', {'title': 'Профиль', 'name': user.name, 'surname': user.surname, 'phone': user.phone})
+    except:
+        return render(request, 'sign/profile.html', {'title': 'Профиль'})
+    
 
 @login_required
 def save_data(request):
@@ -47,7 +49,7 @@ def save_data(request):
     phone = ''
     phone = (int)((phone.join(re.findall(r'\d*', data['2'])))[1:])
     try:
-        Users.objects.filter(user_id=request.user.id).update(name=data['0'], surname=data['1'], phone=phone)
+        Users.objects.get(user_id=request.user.id).update(name=data['0'], surname=data['1'], phone=phone)
     except:
         Users.objects.create(name=data['0'], surname=data['1'], phone=phone, user_id=request.user.id)
     return JsonResponse({})

@@ -21,19 +21,19 @@
                 <input class="form-control" id="surname" value="{{surname}}">
                 <label for="phone">Телефон:</label>
                 <input class="form-control" id="phone" value="{{phone}}">
-                <button class="btn btn-warning btn-block form-control mt-3" onclick="saveData()">
+                <button class="btn btn-primary btn-block form-control mt-3" onclick="saveData()">
                     Сохранить</button>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
                 <a href="{% url 'secret' %}">
-                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-3" type="button">Заказать услугу</button></a>
+                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-5" type="button">Заказать услугу</button></a>
                 <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили контакные данные для обратной связи.</p>
             </div>
             <div class="col-lg-6">
                 <a href="{% url 'logout' %}">
-                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-3" type="button">Выйти из профиля</button>
+                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-5" type="button">Выйти из профиля</button>
                 </a>
                 <p style="text-align: justify;">Нажмите на кнопку для выхода из профиля</p>
             </div>
