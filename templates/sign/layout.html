@@ -17,6 +17,7 @@
 </head>
 
 <body>
+	{% csrf_token %}
  <nav class="navbar navbar-expand-md navbar-dark fixed-top text-body" style="background-color: #0a1322;">
 		<a class="navbar-brand text-warning" href="{% url 'index' %}">AIGames</a>
 		<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"

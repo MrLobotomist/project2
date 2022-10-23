@@ -28,4 +28,5 @@ urlpatterns = [
     path('register/', register_view.as_view(), name ='register'),
     path('profile/', profile_view, name='profile'),
     path('secret/', secret_view, name='secret'),
+    path('save_data/', save_data, name='save'),
 ]

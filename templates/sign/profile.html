@@ -6,27 +6,36 @@
 
 {% block content %}
 <div class="border border-dark rounded back-profile content justify-content-center">
-    <h1 class="text-center mb-2" style="color: white;">Welcome to your profile, {{ user.username }}!</h1>
+    <h1 class="text-center mb-2" style="color: white;">Добро пожаловать в личный кабинет, {{ user.username }}!</h1>
     <div class="card rounded-2 text-black col-xl-6" style="margin: auto;">
         <div class="row">
-            <h1 class="text-center">Контактные данные</h1>
-            <input class="form-control" id="tel">
+            <div class="col">
+                <h1 class="text-center">Контактные данные</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6" style="margin: auto">
+                <label for="name">Имя:</label>
+                <input class="form-control" id="name" value="{{name}}">
+                <label for="surname">Фамилия:</label>
+                <input class="form-control" id="surname" value="{{surname}}">
+                <label for="phone">Телефон:</label>
+                <input class="form-control" id="phone" value="{{phone}}">
+                <button class="btn btn-warning btn-block form-control mt-3" onclick="saveData()">
+                    Сохранить</button>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <div class="text-black px-3 py-4 p-md-5 mx-md-4">
-                        <a href="{% url 'secret' %}">
-                            <button class="btn btn-outline-primary my-2 my-sm-0 form-control" type="button">Заказать услугу</button></a>
-                        <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили контакные данные для обратной связи.</p>
-                </div>
+                <a href="{% url 'secret' %}">
+                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-3" type="button">Заказать услугу</button></a>
+                <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили контакные данные для обратной связи.</p>
             </div>
             <div class="col-lg-6">
-                <div class="text-black px-3 py-4 p-md-5 mx-md-4">
-                    <a href="{% url 'logout' %}">
-                        <button class="btn btn-outline-primary my-2 my-sm-0 form-control" type="button">Выйти из профиля</button>
-                    </a>
-                    <p style="text-align: justify;">Нажмите на кнопку для выхода из профиля</p>
-                </div>
+                <a href="{% url 'logout' %}">
+                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-3" type="button">Выйти из профиля</button>
+                </a>
+                <p style="text-align: justify;">Нажмите на кнопку для выхода из профиля</p>
             </div>
         </div>
     </div>
@@ -35,10 +44,10 @@
 
 {% block js %}
 <script src="{% static 'sign/js/jquery.maskedinput.js' %}"></script>
+<script src="{% static 'sign/js/profile.js' %}"></script>
 <script>
     $(function() {
-      //задание заполнителя с помощью параметра placeholder
-      $("#tel").mask("+7(999)999-99-99", {placeholder: "+7(###)###-##-##" });
+      $("#phone").mask("+7(999)999-99-99", {placeholder: "+7(###)###-##-##" });
     });
 </script>
 {% endblock %}
