@@ -1,4 +1,8 @@
 function Tuner(){
+    var population_ = document.getElementById('in1').value;
+    var rounds_ = document.getElementById('in2').value;
+    var moves_ = document.getElementById("in3").value;
+
     function randomInteger(min, max){
         return Math.floor(Math.random() * (max - min) + min);
     }
@@ -130,10 +134,11 @@ function Tuner(){
         var config = Object.assign({}, params, {
             // Defaults:
             // Theoretical fitness limit = 5 * 200 * 4 / 10 = 400
-            population: 100,
-            rounds: 5,
-            moves: 200
+            population: population_,
+            rounds: rounds_,
+            moves: moves_
         });
+
         var candidates = [];
 
         // Initial population generation
