@@ -9,9 +9,7 @@
 
 {% block content %}
 <section class="content_tetris">
-    <div class="container py-5">
-        <div class="row">&#160</div>
-        <div class="row">&#160</div>
+    <div class="container py-5 content">
         <div class="row justify-content-center">
             <div class="col-xl-lg">
                 <h1 class="header">Tetris AI</h1>
@@ -41,16 +39,22 @@
                     </div>
                     <hr>
                 </div>
-                <div class="div-one-line">
-                    <div>
-                       <a id="start-button_1" class="reset-button">Start Game</a> 
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <label for="id1">Количество поколений</label>
+                        <input type="number" class="form-control my-2" id="in1">
                     </div>
-                    <div>
-                        <a id="drop-button_1" class="reset-button">Reset</a> 
+                    <div class="col-4 text-center">
+                        <label for="id2">Количество раундов</label>
+                        <input type="number" class="form-control my-2" id="in2">
                     </div>
-                    <div>
-                        <a id="stopAll-button_1" class="reset-button">Stop all</a>
+                    <div class="col-4 text-center">
+                        <label for="id3">Действия на раунд</label>
+                        <input type="number" class="form-control my-2" id="in3">
                     </div>
+                </div>
+                <div class>
+
                 </div>
                 <div class="footer">
                     <p>Created by <a href="https://vk.com/manuelka" target="#">DVP Team</a></p>
