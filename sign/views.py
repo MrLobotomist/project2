@@ -13,7 +13,11 @@ from django.core.mail import send_mail
 
 # Create your views here.
 def index (request):
-    return render(request, 'sign/index.html', {'title': 'Главная страница'})
+    if(User.is_authenticated):
+        link = 'profile'
+    else:
+        link = 'login'
+    return render(request, 'sign/index.html', {'title': 'Главная страница', 'link': link})
 
 @login_required
 def logout_view(request):
@@ -48,12 +52,14 @@ def profile_view(request):
 def save_data(request):
     data = json.loads(request.body)
     print(data)
-    phone = ''
-    phone = (int)((phone.join(re.findall(r'\d*', data['2'])))[1:])
+    usr_phone = ''
+    usr_phone = (int)((usr_phone.join(re.findall(r'\d*', data['2'])))[1:])
     try:
-        Users.objects.filter(user_id=request.user.id).update(name=data['0'], surname=data['1'], phone=phone)
+        Users.objects.get(user_id=request.user.id)
     except:
-        Users.objects.create(name=data['0'], surname=data['1'], phone=phone, user_id=request.user.id)
+        Users.objects.create(name=data['0'], surname=data['1'], phone=usr_phone, user_id=request.user.id)
+    else:
+        Users.objects.filter(user_id=request.user.id).update(name=data['0'], surname=data['1'], phone=usr_phone)
     return JsonResponse({})
 
 @login_required
