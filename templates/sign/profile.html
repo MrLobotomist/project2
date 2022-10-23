@@ -27,8 +27,9 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <a href="{% url 'secret' %}">
-                    <button class="btn btn-warning btn-block btn-lg mb-3 mt-5" type="button">Заказать услугу</button></a>
+                <button class="btn btn-warning btn-block btn-lg mb-3 mt-5" type="button" onclick="showOrder()">
+                    Заказать услугу
+                </button>
                 <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили контакные данные для обратной связи.</p>
             </div>
             <div class="col-lg-6">
@@ -40,6 +41,31 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderModalLabel">Заказать услугу</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="theme">Тема заказа</label>
+          <input type="text" maxlength="255" id="theme" class="form-control">
+          <label for="content">Содержание заказа:</label>
+          <textarea id="content" class="form-control"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-primary" onclick="sendOrder()">Заказать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
 
 {% block js %}

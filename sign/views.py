@@ -7,7 +7,8 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from sign.models import Users
+from sign.models import Order, Users
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -46,12 +47,27 @@ def profile_view(request):
 @login_required
 def save_data(request):
     data = json.loads(request.body)
+    print(data)
     phone = ''
     phone = (int)((phone.join(re.findall(r'\d*', data['2'])))[1:])
     try:
-        Users.objects.get(user_id=request.user.id).update(name=data['0'], surname=data['1'], phone=phone)
+        Users.objects.filter(user_id=request.user.id).update(name=data['0'], surname=data['1'], phone=phone)
     except:
         Users.objects.create(name=data['0'], surname=data['1'], phone=phone, user_id=request.user.id)
+    return JsonResponse({})
+
+@login_required
+def save_order(request):
+    data = json.loads(request.body)
+    user = Users.objects.get(user_id=request.user.id).id
+    Order.objects.create(user_id_id=user, theme=data['0'], content=data['1'])
+    send_mail(
+        data['0'],
+        data['1'],
+        'aigames@list.ru',
+        ['aigames@list.ru'],
+        fail_silently=False,
+    )
     return JsonResponse({})
 
 
