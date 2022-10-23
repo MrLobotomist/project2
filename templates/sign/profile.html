@@ -9,24 +9,36 @@
     <h1 class="text-center mb-2" style="color: white;">Welcome to your profile, {{ user.username }}!</h1>
     <div class="card rounded-2 text-black col-xl-6" style="margin: auto;">
         <div class="row">
-            <div class="col-lg-6 align-items-center">
+            <h1 class="text-center">Контактные данные</h1>
+            <input class="form-control" id="tel">
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
                 <div class="text-black px-3 py-4 p-md-5 mx-md-4">
-                        <a target='_blank' href="{% url 'secret' %}">
-                            <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Заказать услугу</button></a>
-                        <p>Нажав на кнопку, вы попадаете на страницу с формой, в которой можете выбрать своего наставника и вид обучения.</p>
+                        <a href="{% url 'secret' %}">
+                            <button class="btn btn-outline-primary my-2 my-sm-0 form-control" type="button">Заказать услугу</button></a>
+                        <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили контакные данные для обратной связи.</p>
                 </div>
             </div>
-            <div class="col-lg-6 align-items-center">
+            <div class="col-lg-6">
                 <div class="text-black px-3 py-4 p-md-5 mx-md-4">
-                    <a target='_blank' href="{% url 'logout' %}">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="button">Выйти из профиля</button>
+                    <a href="{% url 'logout' %}">
+                        <button class="btn btn-outline-primary my-2 my-sm-0 form-control" type="button">Выйти из профиля</button>
                     </a>
-                    <p class="small mb-0">
-                        Для того, что бы выйти - вам необходимо нажать на кнопку "Выйти из профиля".
-                    </p>
+                    <p style="text-align: justify;">Нажмите на кнопку для выхода из профиля</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'sign/js/jquery.maskedinput.js' %}"></script>
+<script>
+    $(function() {
+      //задание заполнителя с помощью параметра placeholder
+      $("#tel").mask("+7(999)999-99-99", {placeholder: "+7(###)###-##-##" });
+    });
+</script>
+{% endblock %}
