@@ -40,17 +40,36 @@
                     <hr>
                 </div>
                 <div class="row">
-                    <div class="col-4 text-center">
-                        <label for="id1">Количество поколений</label>
-                        <input type="number" class="form-control my-2" id="in1" value="100">
+                    <div class="col-12 text-center">
+                        <p>
+                            Функция оценки потерь имеет вид 
+                        </p>
+                        <p>
+                            <img src="{% static 'game\img\formula.png' %}" alt="">
+                        </p>
+                        <p>
+                            У вас есть возможность изменить каждый коэффициент и оценить каждый из них
+                        </p>
+
                     </div>
-                    <div class="col-4 text-center">
-                        <label for="id2">Количество раундов</label>
-                        <input type="number" class="form-control my-2" id="in2" value="5">
+                    <div class="col-3 text-center">
+                        <label for="id1">Коэффициент высоты (a)</label>
+                        <input type="number" class="form-control my-2" id="in1" value="0.510066" step="0.000001">
                     </div>
-                    <div class="col-4 text-center">
-                        <label for="id3">Действия на раунд</label>
-                        <input type="number" class="form-control my-2" id="in3" value="200">
+                    <div class="col-3 text-center">
+                        <label for="id2">Коэффициент линий (b)</label>
+                        <input type="number" class="form-control my-2" id="in2" value="0.760666" step="0.000001">
+                    </div>
+                    <div class="col-3 text-center">
+                        <label for="id3">Коэффициент дырок (c)</label>
+                        <input type="number" class="form-control my-2" id="in3" value="0.35663" step="0.000001">
+                    </div>
+                    <div class="col-3 text-center">
+                        <label for="id4">Коэффициент ухабистости (d)</label>
+                        <input type="number" class="form-control my-2" id="in4" value="0.184483" step="0.000001">
+                    </div>
+                    <div class="col-3 text-center">
+                        <a id="recreate-ai" class="start-ai-button">Recreate AI</a>
                     </div>
                 </div>
                 <div class>

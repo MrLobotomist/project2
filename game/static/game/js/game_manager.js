@@ -4,13 +4,19 @@ function GameManager() {
     var scoreContainerAI = document.getElementById("score-container-ai");
     var gridContextAI = gridCanvasAI.getContext('2d');
     var nextContextAI = nextCanvasAI.getContext('2d');
+
+    var heightWeight = document.getElementById('in1');
+    var linesWeight = document.getElementById('in2');
+    var holesWeight = document.getElementById("in3");
+    var bumpinessWeight = document.getElementById("in3");
+
     var gridAI = new Grid(22, 10);
     var rpgAi = new RandomPieceGenerator();
     var ai = new AI({
-        heightWeight: 0.510066,
-        linesWeight: 0.760666,
-        holesWeight: 0.35663,
-        bumpinessWeight: 0.184483
+        heightWeight: heightWeight.value,         //0.510066,
+        linesWeight: linesWeight.value,           //0.760666,
+        holesWeight: holesWeight.value,           //0.35663,
+        bumpinessWeight: bumpinessWeight.value    //0.184483
     });
     var workingPiecesAI = [null, rpgAi.nextPiece()];
     var workingPieceAI = null;
@@ -34,10 +40,15 @@ function GameManager() {
     var startButton = document.getElementById('start-button');
     var stopAllButton = document.getElementById('stopAll-button');
 
+    var recreateAi = document.getElementById('recreate-ai');
+
 
     var gravityTimerPlayer = new Timer(onGravityTimerTickPlayer, 500);
     var scoreAI = 0;
     var scorePlayer = 0;
+
+    var dropSpeed = 60;
+    var lastScore = 0;
 
     var gameStarted
 
@@ -186,14 +197,14 @@ function GameManager() {
         }
 
         var stopwatchAI = new Stopwatch(function (elapsedAI) {
-            if (elapsedAI >= animationHeightAI * 20) {
+            if (elapsedAI >= animationHeightAI * dropSpeed) {
                 stopwatchAI.stop();
                 redrawGridCanvasAI(20 * animationHeightAI);
                 callback();
                 return;
             }
 
-            redrawGridCanvasAI(20 * elapsedAI / 20);
+            redrawGridCanvasAI(elapsedAI/(dropSpeed/20));
         });
 
         workingPieceDropAnimationStopwatchAI = stopwatchAI;
@@ -227,7 +238,7 @@ function GameManager() {
                 return;
             }
 
-            redrawGridCanvasPlayer(20 * elapsedPlayer / 20);
+            redrawGridCanvasPlayer(elapsedPlayer);
         });
 
         workingPieceDropAnimationStopwatchPlayer = stopwatchPlayer;
@@ -263,6 +274,16 @@ function GameManager() {
                 if (!endTurnAI()) {
                     alert('You Won4!');
                     return;
+                }
+
+                console.log(dropSpeed)
+
+                if (scoreAI >= lastScore + 20){                    
+                    dropSpeed -= 10;
+                    lastScore = scoreAI;
+                    if (lastScore < 20){
+                        lastScore = 20;
+                    } 
                 }
                 
                 startTurnAI();
@@ -407,6 +428,7 @@ function GameManager() {
         workingPiecesAI = [null, rpgAi.nextPiece()];
         workingPieceAI = null;
         scoreAI = 0;
+        dropSpeed = 60;
         updateScoreContainerAI();
         redrawGridCanvasAI();
         redrawNextCanvasAI();
@@ -424,6 +446,7 @@ function GameManager() {
         workingPiecesAI = [null, rpgAi.nextPiece()];
         workingPieceAI = null;
         scoreAI = 0;
+        dropSpeed = 60;
         updateScoreContainerAI();
         startTurnAI();
 
@@ -449,8 +472,6 @@ function GameManager() {
             startTurnAI();
             gameStarted = true;
         }
-        
-
     }
 
     stopAllButton.onclick = function () {
@@ -463,6 +484,7 @@ function GameManager() {
         workingPiecesAI = [null, rpgAi.nextPiece()];
         workingPieceAI = null;
         scoreAI = 0;
+        dropSpeed = 60;
         updateScoreContainerAI();
 
         redrawGridCanvasAI();
@@ -481,6 +503,14 @@ function GameManager() {
         redrawNextCanvasPlayer();
     }
 
+    recreateAi.onclick = function () {
+        ai = new AI({
+            heightWeight: heightWeight.value,         //0.510066,
+            linesWeight: linesWeight.value,           //0.760666,
+            holesWeight: holesWeight.value,           //0.35663,
+            bumpinessWeight: bumpinessWeight.value    //0.184483
+        });
+    }
     
     // var startButton = document.getElementById('start-button');
     // var stopAllButton = document.getElementById('stopAll-button');
