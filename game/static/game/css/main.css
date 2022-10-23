@@ -140,5 +140,9 @@ hr
 .fb_iframe_widget span {
     vertical-align: text-top !important;
 }
-
+.div-one-line
+{
+    display: flex;
+    justify-content: space-between;
+}
 
