@@ -22,7 +22,6 @@ def index (request):
 @login_required
 def logout_view(request):
     """ Страница выхода """
-
     logout(request)
 
     return redirect('index')

@@ -24,6 +24,5 @@ def tetris(request):
         return render(request, 'game/tetris.html', {'title': 'Тетрис', 'records': records})
 
 def snake(request):
-    """ Страница тетриса """
-
+    """ Страница змейки """
     return render(request, 'game/snake.html', {'title': 'Змейка'})

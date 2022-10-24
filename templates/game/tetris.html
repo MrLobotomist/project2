@@ -58,11 +58,13 @@
                             <td>{{item.record}}</td>
                         </tr>
                         {% endfor %}
+                        {% if user.is_authenticated %}
                         <tr>
                             <td>Your record:</td>
                             <td id="rec">{{record}}</td>
                             <td></td>
                         </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </div>
