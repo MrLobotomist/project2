@@ -522,8 +522,7 @@ function GameManager() {
     }
     
     async function sendRecord(){
-        record = document.getElementById('rec').innerHTML;
-        if(typeof(record) == 'string') record = 0;
+        record = parseInt(document.getElementById('rec').innerHTML);
         if(scorePlayer > record){
             let csrftoken = await document.querySelector('[name=csrfmiddlewaretoken]').value;
             let response = await fetch('/save_rec/', {
