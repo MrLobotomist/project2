@@ -78,7 +78,7 @@ def save_order(request):
 def save_rec(request):
     data = json.loads(request.body)
     try:
-        RecordTetris.objects.get(user=request.user.id)
+        RecordTetris.objects.get(user_id=request.user.id)
     except:
         RecordTetris.objects.create(record=data, user_id=request.user.id)
     else:
