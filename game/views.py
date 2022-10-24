@@ -9,14 +9,12 @@ def tetris(request):
     records = []
     count = 1
     for item in records_table:
-        user = m.Users.objects.get(id = item.user_id).user_id
-        nickname = auth.User.objects.get(id=user).username
+        nickname = auth.User.objects.get(id=item.user_id).username
         records.append({'nickname': nickname, 'record': item.record, 'count': count})
         count += 1
     if(request.user.is_authenticated):
-        user_id = m.Users.objects.get(user_id=request.user.id).id
         try:
-            record=m.RecordTetris.objects.get(user_id=user_id).record
+            record=m.RecordTetris.objects.get(user_id=request.user.id).record
         except:
             record = 0
         return render(request, 'game/tetris.html', {'title': 'Тетрис', 'record': record, 'records': records})

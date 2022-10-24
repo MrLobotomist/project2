@@ -42,9 +42,9 @@ def profile_view(request):
     """ Страница профиля """
     try:
         user = Users.objects.get(user_id=request.user.id)
-        return render(request, 'sign/profile.html', {'title': 'Профиль', 'name': user.name, 'surname': user.surname, 'phone': user.phone})
+        return render(request, 'sign/profile.html', {'title': 'Профиль', 'name': user.name, 'surname': user.surname, 'phone': user.phone, 'isAddContact': True})
     except:
-        return render(request, 'sign/profile.html', {'title': 'Профиль'})
+        return render(request, 'sign/profile.html', {'title': 'Профиль', 'isAddContact': False})
     
 
 @login_required
@@ -77,13 +77,12 @@ def save_order(request):
 @login_required
 def save_rec(request):
     data = json.loads(request.body)
-    user_id = Users.objects.get(user_id=request.user.id).id
     try:
-        RecordTetris.objects.get(user=user_id)
+        RecordTetris.objects.get(user=request.user.id)
     except:
-        RecordTetris.objects.create(record=data, user_id=user_id)
+        RecordTetris.objects.create(record=data, user_id=request.user.id)
     else:
-        RecordTetris.objects.filter(user_id=user_id).update(record=data)
+        RecordTetris.objects.filter(user_id=request.user.id).update(record=data)
     return JsonResponse({})
 
 @login_required

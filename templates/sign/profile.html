@@ -27,10 +27,18 @@
         </div>
         <div class="row">
             <div class="col-lg-6">
+              {% if isAddContact %}
                 <button class="btn btn-warning btn-block btn-lg mb-3 mt-5" type="button" onclick="showOrder()">
                     Заказать услугу
                 </button>
-                <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили контакные данные для обратной связи.</p>
+                <p style="text-align: justify;">Нажмите на кнопку для формления заказа. Убедитесь в том, что оставили верные контакные данные для обратной связи.</p>
+              {% else %}
+                <button class="btn btn-warning btn-block btn-lg mb-3 mt-5" type="button" disabled="True">
+                    Заказать услугу
+                </button>
+                <p style="text-align: justify;">Укажите контактные данные для заказа.</p>
+              {% endif %}
+                
             </div>
             <div class="col-lg-6">
                 <a href="{% url 'logout' %}">
@@ -60,7 +68,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-          <button type="button" class="btn btn-primary" onclick="sendOrder()">Заказать</button>
+            <button type="button" class="btn btn-primary" onclick="sendOrder()">Заказать</button>
         </div>
       </div>
     </div>
