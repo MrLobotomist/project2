@@ -63,11 +63,11 @@ def save_data(request):
 @login_required
 def save_order(request):
     data = json.loads(request.body)
-    user = Users.objects.get(user_id=request.user.id).id
-    Order.objects.create(user_id_id=user, theme=data['0'], content=data['1'])
+    user = Users.objects.get(user_id=request.user.id)
+    Order.objects.create(user_id_id=user.id, theme=data['0'], content=data['1'])
     send_mail(
-        data['0'],
-        data['1'],
+        'Заказ: '+data['0'],
+        'Содержание: ' + data['1'] + '\nПользователь: {} {}\nТелефон: +7{}'.format(user.name, user.surname, user.phone),
         'aigames@list.ru',
         ['aigames@list.ru'],
         fail_silently=False,
