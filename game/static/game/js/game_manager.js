@@ -50,6 +50,8 @@ function GameManager() {
     var dropSpeed = 60;
     var lastScore = 0;
 
+    var loose = false;
+
     var gameStarted
 
     // Graphics AI
@@ -346,10 +348,11 @@ function GameManager() {
 
         // If working piece has reached bottom, end of turn has been processed
         // and game cannot continue because grid has been exceeded
-        if (!endTurnPlayer()) {
+        if (!endTurnPlayer() & !loose) {
             isKeyEnabled = false;
             alert('Game Over2!');
             isAiActive = false;
+            loose = true;
             sendRecord();
             return;
         }
@@ -362,7 +365,7 @@ function GameManager() {
 
     // Process keys
     function onKeyDown(event) {
-        if(!isKeyEnabled){
+        if(loose){
             return;
         }
         switch (event.which) {
@@ -371,10 +374,11 @@ function GameManager() {
                 gravityTimerPlayer.stop(); // Stop gravity
                 startWorkingPieceDropAnimationPlayer(function () { // Start drop animation
                     while (workingPiecePlayer.moveDown(gridPlayer)); // Drop working piece
-                    if (!endTurnPlayer()) {
+                    if (!endTurnPlayer() & !loose) {
                         alert('Game Over1!');
                         isAiActive = false;
                         sendRecord();
+                        loose = true;
                         return;
                     }
                     startTurnPlayer();
@@ -461,6 +465,7 @@ function GameManager() {
         scorePlayer = 0;
         updateScoreContainerPlayer();
         startTurnPlayer();
+        loose = false;
     }
 
     startButton.onclick = function () {
@@ -473,6 +478,7 @@ function GameManager() {
             startTurnPlayer();
             startTurnAI();
             gameStarted = true;
+            loose = false;
         }
     }
 
@@ -499,6 +505,7 @@ function GameManager() {
         workingPiecesPlayer = [null, rpgPlayer.nextPiece()];
         workingPiecePlayer = null;
         scorePlayer = 0;
+        loose = false;
         updateScoreContainerPlayer();
 
         redrawGridCanvasPlayer();
