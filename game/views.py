@@ -5,7 +5,7 @@ from django.contrib.auth import models as auth
 # Create your views here.
 def tetris(request):
     """ Страница тетриса """
-    records_table = m.RecordTetris.objects.all().order_by('record')[0:10]
+    records_table = m.RecordTetris.objects.all().order_by('-record')[0:10]
     records = []
     count = 1
     for item in records_table:
