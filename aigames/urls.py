@@ -30,4 +30,5 @@ urlpatterns = [
     path('secret/', secret_view, name='secret'),
     path('save_data/', save_data, name='save'),
     path('save_order/', save_order, name='save_order'),
+    path('save_rec/', save_rec, name='save_rec'),
 ]

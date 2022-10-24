@@ -11,3 +11,7 @@ class Order(models.Model):
     user_id = models.ForeignKey(Users, on_delete = models.CASCADE)
     theme = models.CharField(max_length=255)
     content = models.TextField()
+
+class RecordTetris(models.Model):
+    user = models.ForeignKey(Users, on_delete = models.CASCADE)
+    record = models.IntegerField()

@@ -350,6 +350,7 @@ function GameManager() {
             isKeyEnabled = false;
             alert('Game Over2!');
             isAiActive = false;
+            sendRecord();
             return;
         }
 
@@ -373,6 +374,7 @@ function GameManager() {
                     if (!endTurnPlayer()) {
                         alert('Game Over1!');
                         isAiActive = false;
+                        sendRecord();
                         return;
                     }
                     startTurnPlayer();
@@ -512,13 +514,21 @@ function GameManager() {
         });
     }
     
+    async function sendRecord(){
+        record = document.getElementById('rec').innerHTML;
+        if(typeof(record) == 'string') record = 0;
+        if(scorePlayer > record){
+            let csrftoken = await document.querySelector('[name=csrfmiddlewaretoken]').value;
+            let response = await fetch('/save_rec/', {
+                method: 'POST',
+                headers: {'X-CSRFToken': csrftoken},
+                body: JSON.stringify(scorePlayer)
+            });
+            if (response.ok) {
+                document.getElementById('rec').innerHTML = scorePlayer;
+            }
+        }
+    }
     // var startButton = document.getElementById('start-button');
     // var stopAllButton = document.getElementById('stopAll-button');
-
-    
-
-    
-
-
-
 }
