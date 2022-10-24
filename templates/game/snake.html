@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block css %}
-<link href="{% static 'game/css/index.c0f27338.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'game/css/index.a950a753.css' %}" rel="stylesheet" type="text/css">
 <link href="{% static 'game/dqn/model.json' %}" id="">
 <link href="{% static 'game/dqn/weight.bin' %}">
 
@@ -42,22 +42,39 @@
             is trained to estimate the value of actions given the current game state.
             The DQN is a 2D convolutional network.  </p>
     </section>
-    <section style="margin: auto;">
-        <div id="load-model-div">
-        </div>
-        <div> <button id="auto-play-stop" disabled>Auto Play</button> <button id="step" disabled>Step</button>
+    <section>
+        <div> <button id="auto-play-stop" disabled>Auto Play</button>
+            <button id="step" disabled>Step</button>
+            <button id="start">Start</button>
             <button id="reset" disabled>Reset</button> </div>
-        <div id="show-q-values-div"> <input type="checkbox" id="show-q-values" checked> <span>Show Q-values</span>
+        <div id="show-q-values-div">
+            <input type="checkbox" id="show-q-values" checked>
+            <span>Show Q-values</span>
         </div>
-        <div id="game-status-div"> <span id="game-status">Game started.</span> </div>
-        <div> <canvas id="game-canvas" height="400px" width="400px"></canvas> </div>
+        <div class="row">
+            <div class="col-6 text-center">
+                <span id="game-status-pl">Redy to start.</span>
+            </div>
+            <div class="col-6 text-center">
+            <span id="game-status">Game started.</span>
+        </div>
+        </div>
+
+        <div> <select name="speedSelector" id="speed-selector">
+                <option value="100">Скорость 1</option>
+                <option value="200" selected>Скорость 2</option>
+                <option value="300">Скорость 3</option>
+                <option value="500">Скорость 4</option>
+                <option value="750">Скорость 5</option>
+            </select> </div>
+        <div> <canvas id="game-canvas" height="400px" width="400px"></canvas> <canvas id="non" height="10px"
+                width="30px"></canvas> <canvas id="game-canvas-ai" height="400px" width="400px"></canvas> </div>
     </section>
 </div>
-<!-- <div src="{% static 'game/dqn/model.json' %}"></div>
-<div src="{% static 'game/dqn/weight.bin' %}"></div> -->
+
 <script>
     var pathToJson = "{% static 'game/dqn/model.json' %}";
 </script>
 
-<script src="{% static 'game/js/index.5a6f1bea.js' %}"></script>
+<script src="{% static 'game/js/index.3eef8866.js' %}"></script>
 {% endblock content %}
